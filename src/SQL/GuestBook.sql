@@ -78,11 +78,12 @@ select * from guest order by gno desc;
  
 
 */
+update guest set gno = 1 where gno =23;
 update guest set gname ='안녕',gtitle = '수정제목23',gcont = '수정내용23' where gno=23;
 select * from guest where gno=22;
 delete From guest where gno=1;
 select * from guest;
-
+create table guest1;
 /* 1.시퀸스를 사용하지 않고 다음과 같은 레코드를 저장해보자.
     21,을지문덕,제목21,내용21,sysdate
    2. 21번을 기준으로 전체 컬럼 레코드를 검색하는 쿼리문을 만들어보자
