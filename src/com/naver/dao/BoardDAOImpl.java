@@ -1,3 +1,4 @@
+package com.naver.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -27,7 +28,7 @@ PreparedStatement pt =null;
 		try {
 			Class.forName(driver);
 			con = DriverManager.getConnection(url,user,password);
-			sql= "select * from tbl_board order by bno desc";
+			sql= "insert into BoardTest values(24,'홍길동','010-1111-2222','서울 강남구','남자');";
 			pt =con.prepareStatement(sql); //쿼리문을 미리 컴파일 하여 수행할 pt생성
 			rs=pt.executeQuery(); //select문 수행 후 검색 결과 레코드를 rs에 저장
 			while(rs.next()) {//복수개의 레코드 행을 검색할 때는 while반복문으로 처리
