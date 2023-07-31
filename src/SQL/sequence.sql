@@ -14,14 +14,35 @@ select dept_deptno_seq.nextval as "시퀸스 번호 값 확인" from dual;
 
 -- 시퀸스 삭제 문법  drop sequence 시퀸스 명
 
-create sequence dept_test;
+create sequence dept_test1
 start with 10
 increment by 10
 maxvalue 30; 
 
-select sequence_name , max_values ,increment_by from user_sequences;
-
-select dept_text.nextval as "번호값01 " from dual;
+select sequence_name , max_value ,increment_by from user_sequences;
+select dept_text.nextval as "번호값01" from dual; 
+select dept_text1.nextval as "번호값01 " from dual;
 drop sequence dept_del_seq;
 
-alter table sequence dept_del_seq
+alter  sequence dept_test1
+maxvalue 1000;
+
+ 
+ create table HakTable(
+ age number(38) 
+ ,
+name varchar2(50) ,
+ address varchar2(50),
+	 tel varchar2(50),
+	 gender varchar2(50),
+ job  varchar2(50)
+ );
+
+create sequence Hak_seq
+start with 1
+increment by 1
+nocache;
+
+ SELECT Hak_seq.NEXTVAL FROM DUAL; 
+ 
+ 

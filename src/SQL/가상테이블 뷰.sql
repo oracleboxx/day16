@@ -130,18 +130,24 @@ insert into emp92 values(1,'홍길동',1000);
 insert into emp92 values(2,'강감찬',2000);
 insert into emp92 values(3,'이순신',3000);
 
-select rowNum , empno,ename,sal from emp92 order by empno asc;
-
-select rowNum , empno,ename,sal from emp92 order by empno desc;
+select rowNum , empno,ename,sal from row_view where rownum<=1;
+select rowNum , empno,ename,sal from emp92 order by ename desc;
 
 -- 저장 공간이 필요없는 가상테이블 뷰를 사용해서 rowNum컬럼 순번을 변경
 
 create or replace view row_view 
 as select empno,ename,sal from emp92 order by empno desc;
 
-create or replace view 
-select rowNum ename from row_view;
+create or replace view row_view as
+select rowNum empno,ename,sal from row_view order by ename desc;
 
 delete from emp92 where empno =2;
 drop table emp92;
+
+select * from row_view;
+
+--인라인 서브쿼리문을 활용해서 가장 최근에 입사한 사원을 구해본다.
+select rownum, empno,ename,sal
+from(select empno,ename,sal from emp92 order by empno desc)
+where rownum <=1;
 
